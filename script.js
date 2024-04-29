@@ -133,9 +133,11 @@ if (window.innerWidth >= 1366) {
         memberCards[5].style.display = "none";
         let currentSlide = 0;
         document.querySelector(".members_nav-counter").textContent = `3/6`;
+         
 
-        leftButton.addEventListener("click", function () {
+        function nextSlide() {
             if (currentSlide === 0) {
+                currentSlide = 1;
                 memberCards[0].style.display = "none";
                 memberCards[1].style.display = "none";
                 memberCards[2].style.display = "none";
@@ -143,7 +145,6 @@ if (window.innerWidth >= 1366) {
                 memberCards[4].style.display = "flex";
                 memberCards[5].style.display = "flex";
                 document.querySelector(".members_nav-counter").textContent = `6/6`;
-                currentSlide = 1;
             } else {
                 currentSlide = 0;
                 memberCards[0].style.display = "flex";
@@ -154,34 +155,73 @@ if (window.innerWidth >= 1366) {
                 memberCards[5].style.display = "none";
                 document.querySelector(".members_nav-counter").textContent = `3/6`;
             }
+        }
 
+        let interval = setInterval(nextSlide, 4000);
 
-
+        leftButton.addEventListener("click", function () {
+            clearInterval(interval);
+            nextSlide();
+            interval = setInterval(nextSlide, 4000);
         });
 
         rightButton.addEventListener("click", function () {
-            if (currentSlide === 0) {
-                memberCards[0].style.display = "none";
-                memberCards[1].style.display = "none";
-                memberCards[2].style.display = "none";
-                memberCards[3].style.display = "flex";
-                memberCards[4].style.display = "flex";
-                memberCards[5].style.display = "flex";
-                document.querySelector(".members_nav-counter").textContent = `6/6`;
-                currentSlide = 1;
-            } else {
-                currentSlide = 0;
-                memberCards[0].style.display = "flex";
-                memberCards[1].style.display = "flex";
-                memberCards[2].style.display = "flex";
-                memberCards[3].style.display = "none";
-                memberCards[4].style.display = "none";
-                memberCards[5].style.display = "none";
-                document.querySelector(".members_nav-counter").textContent = `3/6`;
-            }
-
+            clearInterval(interval);
+            nextSlide();
+            interval = setInterval(nextSlide, 4000);
         });
     };
+
+
+
+    //     leftButton.addEventListener("click", function () {
+    //         if (currentSlide === 0) {
+    //             memberCards[0].style.display = "none";
+    //             memberCards[1].style.display = "none";
+    //             memberCards[2].style.display = "none";
+    //             memberCards[3].style.display = "flex";
+    //             memberCards[4].style.display = "flex";
+    //             memberCards[5].style.display = "flex";
+    //             document.querySelector(".members_nav-counter").textContent = `6/6`;
+    //             currentSlide = 1;
+    //         } else {
+    //             currentSlide = 0;
+    //             memberCards[0].style.display = "flex";
+    //             memberCards[1].style.display = "flex";
+    //             memberCards[2].style.display = "flex";
+    //             memberCards[3].style.display = "none";
+    //             memberCards[4].style.display = "none";
+    //             memberCards[5].style.display = "none";
+    //             document.querySelector(".members_nav-counter").textContent = `3/6`;
+    //         }
+
+
+
+    //     });
+
+    //     rightButton.addEventListener("click", function () {
+    //         if (currentSlide === 0) {
+    //             memberCards[0].style.display = "none";
+    //             memberCards[1].style.display = "none";
+    //             memberCards[2].style.display = "none";
+    //             memberCards[3].style.display = "flex";
+    //             memberCards[4].style.display = "flex";
+    //             memberCards[5].style.display = "flex";
+    //             document.querySelector(".members_nav-counter").textContent = `6/6`;
+    //             currentSlide = 1;
+    //         } else {
+    //             currentSlide = 0;
+    //             memberCards[0].style.display = "flex";
+    //             memberCards[1].style.display = "flex";
+    //             memberCards[2].style.display = "flex";
+    //             memberCards[3].style.display = "none";
+    //             memberCards[4].style.display = "none";
+    //             memberCards[5].style.display = "none";
+    //             document.querySelector(".members_nav-counter").textContent = `3/6`;
+    //         }
+
+    //     });
+    // };
 
     memberSlider();
 }
